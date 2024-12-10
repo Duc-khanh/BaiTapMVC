@@ -7,7 +7,10 @@
 </head>
 <body>
 <h1>Add New Employee</h1>
-<form action="employee?action=addEmployee" method="get">
+<form action="employee?action=addEmployee" method="post">
+    <label for="name">ID:</label>
+    <input type="text" id="id" name="id">
+    <br><br>
     <label for="name">Name:</label>
     <input type="text" id="name" name="name">
     <br><br>
