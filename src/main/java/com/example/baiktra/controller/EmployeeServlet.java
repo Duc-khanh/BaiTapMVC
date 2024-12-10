@@ -26,17 +26,34 @@ public class EmployeeServlet extends HttpServlet {
 
         }
         switch (action) {
+            case "add":
+                showNewForm(request, response);
+                break;
             default:
                 showEmployee(request, response);
                 break;
-
         }
+    }
+
+    private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("employee.jsp").forward(request, response);
     }
 
     private void showEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Employee> listEmployee = employeeService.getAllEmployee();
         request.setAttribute("listEmployee", listEmployee);
         request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
+    private void addEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        int age = Integer.parseInt(request.getParameter("age"));
+        String jobPosition = request.getParameter("position");
+        String department = request.getParameter("department");
+        double salary = Double.parseDouble(request.getParameter("salary"));
+        int id = (int) (Math.random() * 10000);
+        Employee newEmployee = new Employee(id, name, age, jobPosition, department, salary);
+        employeeService.addEmployee(newEmployee);
+        response.sendRedirect("employee");
     }
 
 
