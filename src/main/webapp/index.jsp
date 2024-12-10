@@ -36,8 +36,8 @@
             <td>${employee.salary}</td>
 
             <td>
-                <a href="employee?action=edit&id=${employee.ID}">Edit</a>
-                <a href="employee?action=delete&id=${employee.ID}" >Delete</a>
+                <a href="employee?action=edit&ID=${employee.ID}">Edit</a>
+                <a href="employee?action=delete&ID=${employee.ID}" >Delete</a>
             </td>
         </tr>
     </c:forEach>
